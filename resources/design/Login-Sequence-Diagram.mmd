@@ -1,0 +1,37 @@
+sequenceDiagram
+    User->>UI: Enters credentials, Taps Login Button (Triggers OAuth Flow externally)
+    Note over UI,Network: User authenticates on github.com, gets redirected back with code.
+    MainActivity/DeepLink->>VM: handleDeepLink(code) / exchangeCodeForToken(code)
+
+    activate VM
+    VM->>VM: Updates _authState to Loading
+    VM->>Repo: exchangeCodeForToken(code)
+    activate Repo
+    Repo->>API: exchangeCodeForToken(clientId, secret, code, redirectUri)
+    activate API
+    API->>Network: POST login/oauth/access_token
+    activate Network
+    Network-->>API: Response (AccessTokenResponse)
+    deactivate Network
+    API-->>Repo: Returns Response~AccessTokenResponse~
+    deactivate API
+    alt Request Successful and Token received
+        Repo->>Store: saveAuthToken(token)
+        activate Store
+        Note right of Store: Persists token
+        Store-->>Repo: Token Saved
+        deactivate Store
+        Repo-->>VM: Returns Result.success(token)
+    else Request Failed or No Token
+        Repo-->>VM: Returns Result.failure(exception)
+    end
+    deactivate Repo
+
+    alt Token Exchange Success
+        VM->>VM: Updates _authState to Authenticated
+    else Token Exchange Failed
+        VM->>VM: Updates _authState to Error(message)
+    end
+    deactivate VM
+
+    Note over UI: UI observes authState change and reacts (e.g., navigates to home)

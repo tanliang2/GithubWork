@@ -1,0 +1,71 @@
+classDiagram
+    direction LR
+
+    class MainActivity {
+        <<Activity>>
+        +onCreate()
+    }
+    MainActivity --> UILayer : displays
+
+    class AppViewModel {
+        <<ViewModel>>
+        +githubRepository: GithubRepository
+        +dataStoreHelper: DataStoreHelper
+    }
+    AppViewModel o-- GithubRepository
+    AppViewModel o-- DataStoreHelper
+
+    class NetworkModule {
+        <<HiltModule>>
+        +provideGithubApiService()
+        +provideAuthorizationInterceptor()
+    }
+    NetworkModule --> GithubApiService : provides
+    NetworkModule --> AuthorizationInterceptor : provides
+    NetworkModule --> DataStoreHelper : needs
+
+    class GithubRepository {
+        <<Repository>>
+        -apiService: GithubApiService
+        -dataStoreHelper: DataStoreHelper
+        +performDataOperations()
+    }
+    GithubRepository o-- GithubApiService
+    GithubRepository o-- DataStoreHelper
+    GithubRepository --> DataModels : uses
+
+    class DataStoreHelper {
+        <<Data Persistence>>
+        +saveToken()
+        +getToken()
+    }
+
+    class GithubApiService {
+        <<Retrofit Service>>
+        +networkCalls()
+    }
+    GithubApiService --> DataModels : uses
+
+    class AuthorizationInterceptor {
+        <<OkHttp Interceptor>>
+        -dataStoreHelper: DataStoreHelper
+        +intercept()
+    }
+    AuthorizationInterceptor o-- DataStoreHelper
+
+    class UILayer {
+        <<Compose UI>>
+        Screens, Navigation, ViewModels
+    }
+    UILayer --> AppViewModel : uses
+
+    class DataModels {
+        <<Data Transfer Objects>>
+        User, Repo, Issue, etc.
+    }
+
+    MainActivity ..> AppViewModel : injects/uses
+    NetworkModule ..> AuthorizationInterceptor : configures
+    AppViewModel ..> GithubRepository : depends on
+    UILayer ..> DataModels : displays
+

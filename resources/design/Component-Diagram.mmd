@@ -1,0 +1,38 @@
+graph TD
+    subgraph UI Layer
+        direction LR
+        MainActivity
+        ComposableScreens["Composable Screens (*Screen.kt, components)"]
+        Navigation["Navigation (navigation/)"]
+    end
+
+    subgraph ViewModel Layer
+        direction LR
+        AuthViewModel["AuthViewModel"]
+        OtherViewModels["Other ViewModels (...)"]
+    end
+
+    subgraph Data Layer
+        direction TB
+        GithubRepository
+        subgraph Data Sources
+            direction LR
+            NetworkSource["Network Source (ApiService, Retrofit)"]
+            LocalSource["Local Source (DataStore)"]
+        end
+        DataModels["Data Models (model/)"]
+    end
+
+    subgraph Dependency Injection
+        Hilt["Hilt (Modules, Annotations)"]
+    end
+
+    UI_Layer --> ViewModel_Layer
+    ViewModel_Layer --> Data_Layer
+
+    GithubRepository --> NetworkSource
+    GithubRepository --> LocalSource
+
+    Hilt -- Provides Dependencies --> UI_Layer
+    Hilt -- Provides Dependencies --> ViewModel_Layer
+    Hilt -- Provides Dependencies --> Data_Layer

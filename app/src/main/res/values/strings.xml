@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">GithubWork</string>
+
+    <!-- Common Actions -->
+    <string name="action_back">Back</string>
+    <string name="action_submit">Submit</string>
+    <string name="action_share">Share</string>
+    <string name="action_more_options">More Options</string>
+    <string name="button_retry">Retry</string>
+
+    <!-- Common Errors -->
+    <string name="error_unknown">An unknown error happen</string>
+    <string name="error_load_failed">Load failed: %1$s</string>
+    <string name="error_prefix_detail">Error: %1$s</string>
+
+    <!-- Language Filter -->
+    <string name="language_filter_all">All</string>
+
+    <!-- Repo Item / Card -->
+    <string name="repo_item_stars_description">Stars</string>
+    <string name="repo_item_forks_description">Forks</string>
+    <string name="repo_item_language_description">Language</string>
+
+    <!-- Search -->
+    <string name="search_bar_placeholder">Search repositories</string>
+    <string name="search_bar_icon_description">Search Icon</string>
+    <string name="error_search_failed">Search failed: %1$s</string>
+
+    <!-- Login -->
+    <string name="login_logo_description">GitHub Logo</string>
+    <string name="login_button_text">Login with GitHub</string>
+
+    <!-- Repository Detail -->
+    <string name="repository_issues_button">Issues</string>
+    <string name="repository_new_issue_button">New Issue</string>
+    <string name="error_repo_load_failed">Could not load repository information</string>
+    <string name="error_readme_decode_failed">Failed to decode README: %1$s</string>
+    <string name="repository_show_readme">Show README</string>
+    <string name="repository_readme_not_found">README file not found</string>
+
+    <!-- Profile -->
+    <string name="error_profile_load_failed">Failed to load profile: %1$s</string>
+    <string name="profile_avatar_description">%1$s avatar</string>
+    <string name="profile_logout_button">Logout</string>
+    <string name="profile_repositories_title">Repositories</string>
+    <string name="profile_view_all_button">View All</string>
+    <string name="profile_recent_title">Recently pushed</string>
+    <string name="profile_no_recent_repos">No recently pushed repositories</string>
+    <string name="profile_followers_following">%1$d followers · %2$d following</string>
+
+
+    <!-- Issues List -->
+    <string name="issues_title">Issues</string>
+    <string name="issues_none_found">No issues found</string>
+    <string name="issue_item_subtitle">#%1$d opened by %2$s</string>
+
+    <!-- Issue Detail -->
+    <string name="issue_detail_title">%1$s / %2$s #%3$d</string>
+    <string name="issue_status_open">Open</string>
+    <string name="issue_status_closed">Closed</string>
+    <string name="issue_opened_on">opened on %1$s</string> <!-- Placeholder, needs date formatting -->
+    <string name="issue_add_reaction">Add Reaction</string>
+    <string name="issue_sub_issues_title">Sub-issues</string>
+    <string name="issue_add_sub_issue">Add Sub-issue</string>
+
+    <string name="issue_create_title">Create Issue</string>
+    <string name="issue_title_label">Title</string>
+    <string name="issue_comment_optional_label">Comment (Optional)</string>
+
+    <string name="error_repo_data_load_failed_default">Failed to load repository data</string>
+    <string name="error_repo_prefix">Repository: %1$s</string>
+    <string name="error_readme_prefix">README: %1$s</string>
+    <string name="error_profile_load_unknown_default">Unknown error loading profile</string>
+    <string name="error_profile_load_generic_default">Failed to load profile</string>
+    <string name="error_recent_repos_load_default">Failed to load recently pushed repos</string>
+    <string name="error_issues_load_failed_default">Failed to load issues</string>
+    <string name="error_issue_detail_load_failed_default">Failed to load issue details</string>
+    <string name="error_issue_create_failed_default">Failed to create issue</string>
+
+    <string name="repositories_screen_title">Repositories</string>
+    <string name="repositories_content_description_back">Back</string>
+</resources>
